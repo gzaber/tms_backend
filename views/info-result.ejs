@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .success {
+                color: green;
+            }
+            .failure {
+                color: red;
+            }
+            div.box {
+                width: 300px;
+                margin: 0 auto;
+                padding: 30px;
+                box-shadow: 1px 1px 2px 2px grey;
+                border-radius: 10px;
+                background: white;
+            }
+        </style>
+    </head>
+    <body>
+        <!---->
+        <% if (typeof locals.info !== 'undefined') { %>
+        <div class="box">
+            <h2 class="success">Success</h2>
+            Log: <br />
+            <%= locals.info %>
+        </div>
+        <% } %>
+        <!---->
+        <% if (typeof locals.error !== 'undefined') { %>
+        <div class="box">
+            <h2 class="failure">Failure</h2>
+            Log: <br />
+            <i><%= locals.error %></i>
+        </div>
+        <% } %>
+        <!---->
+    </body>
+</html>

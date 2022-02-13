@@ -1,0 +1,17 @@
+# MongoDB Atlas cluster
+MONGO_URL=mongodb+srv://user:password@cluster/database
+#  or MongoDB instance
+# MONGO_URL=mongodb://user:password@host:port/database
+
+EMAIL_HOST=email.com
+EMAIL_USER=username
+EMAIL_PASSWORD=password
+EMAIL_SENDER=username@email.com
+EMAIL_VERIFICATION_EXPIRE_TIME=1h
+
+SERVER_PORT=3000
+SERVER_HOST=http://localhost
+SERVER_LOGIN_TOKEN_EXPIRETIME=1h
+SERVER_CONFIRMATION_TOKEN_EXPIRETIME=1h
+SERVER_TOKEN_ISSUER=tmsIssuer
+SERVER_TOKEN_SECRET=tmsEncryptedSecret

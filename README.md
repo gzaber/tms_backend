@@ -46,7 +46,7 @@ SERVER_PORT=3000
 SERVER_HOST=http://localhost:3000
 ```
 
-When I run server locally I have to specified port number in both variables, `SERVER_PORT` and
+When I run server locally I have to specified port number for both variables, `SERVER_PORT` and
 `SERVER_HOST`. When I run application on my production server I need only to specified port number
 for `SERVER_PORT`. `SERVER_HOST` doesn't need it.
 

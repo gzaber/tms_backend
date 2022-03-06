@@ -1,29 +1,30 @@
 # tms_backend - Task Management System backend
 
-Server side API project for TMS (Task Management System) frontend.  
-It enables communication with a document-oriented database.
-
-The project was written for a friendly company.  
-It is used to manage services of security systems and other installations at various facilities.
+An API server designed to manage tasks in an engineering company.  
+It enables communication with a document-oriented database. It is used to manage maintenance of
+security systems and other installations at various facilities.  
+TMS web application is used to communicate with this server.
 
 ## Table of contents
 
 -   [Features](#features)
 -   [Technologies](#technologies)
 -   [Setup](#setup)
--   [Test](#test)
 -   [Launch](#launch)
+-   [Test](#test)
 -   [Insipiration](#inspiration)
 
 ## Features
 
--   Basic authentication (register/login with hashed password)
--   Confirmation of account registration and password reset via e-mail
--   After successful login, token received in response
--   Other requests use received token in `Authorization` header
--   Pre-defined response structures with proper status codes
--   CRUD operations
--   CORS enabled
+-   Authentication
+    -   sign up
+    -   sign in
+    -   reset forgotten password
+-   Sign up confirmation, reset password confirmation sending by e-mail
+-   Role based authorization
+-   Email management
+-   User management
+-   Task (service) management
 -   Field validation
 
 ## Technologies
@@ -35,36 +36,75 @@ It is used to manage services of security systems and other installations at var
 
 ## Setup
 
-Clone this repository to your computer and run command `npm install` to install all the
-dependencies.  
-Create `.env` file in the root of the project. Copy variables from file `.sample_env` and give them
-appropriate values.  
-If you run application locally, set the following variables:
+Clone or download this repository.  
+Use the following command to install all the dependencies:
+
+```
+npm install
+```
+
+Create `.env` file in the project root directory with the following code:
+
+```
+# MongoDB Atlas cluster
+MONGO_URL=mongodb+srv://user:password@cluster/database
+#  or MongoDB instance
+# MONGO_URL=mongodb://user:password@host:port/database
+
+EMAIL_HOST=email.com
+EMAIL_USER=username
+EMAIL_PASSWORD=password
+EMAIL_SENDER=username@email.com
+EMAIL_VERIFICATION_EXPIRE_TIME=1h
+
+SERVER_PORT=3000
+SERVER_HOST=http://localhost:3000
+SERVER_LOGIN_TOKEN_EXPIRETIME=1h
+SERVER_CONFIRMATION_TOKEN_EXPIRETIME=1h
+SERVER_TOKEN_ISSUER=tmsIssuer
+SERVER_TOKEN_SECRET=tmsEncryptedSecret
+```
+
+Put your credentials in the `.env` file.
+
+If server is running locally on port `3000`, set the following values:
 
 ```
 SERVER_PORT=3000
 SERVER_HOST=http://localhost:3000
 ```
 
-When I run server locally I have to specified port number for both variables, `SERVER_PORT` and
-`SERVER_HOST`. When I run application on my production server I need only to specified port number
-for `SERVER_PORT`. `SERVER_HOST` doesn't need it.
+If application is running on production server it may not need port number for `SERVER_HOST`:
 
-Application can connect to MongoDB Atlas cluster:  
-`MONGO_URL=mongodb+srv://<user>:<password>@<cluster>/<database>`  
-or MongoDB instance:  
-`MONGO_URL=mongodb://<user>:<password>@<host>:<port>/<database>`  
+```
+SERVER_PORT=3333
+SERVER_HOST=http://server.com
+```
+
+Application can connect to MongoDB Atlas cluster or MongoDB instance:
+
+```
+MONGO_URL=mongodb+srv://<user>:<password>@<cluster>/<database>
+MONGO_URL=mongodb://<user>:<password>@<host>:<port>/<database>
+```
+
 Replace strings in angle brackets with your MongoDB deployment's details.
-
-## Test
-
-Run `npm run test` to start all the tests.
 
 ## Launch
 
-Run `nodemon src/app.ts` to start the application.  
-If you run application locally you will be able to access it at:  
-`http://localhost:3000`
+Run the application using the following command:
+
+```
+nodemon src/app.ts
+```
+
+## Test
+
+Run the tests using IDE or using the following command:
+
+```
+npm run test
+```
 
 ## Inspiration
 
